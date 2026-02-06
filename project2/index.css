@@ -1,0 +1,44 @@
+html {
+    background-color: #453737;
+    backdrop-filter: opacity(0.75);
+    background-size: 200%;
+}
+
+main {
+    margin-top: 15rem;
+    width: min(100% - 3rem, var(--container-max, 60ch));
+    margin-inline: auto;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+    border: #3b3a37 5px solid;
+}
+
+section img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    filter: contrast(0.8) saturate(0.25);
+}
+
+big {
+    display: block;
+    color: #d7d3ca;
+    font-size: 2rem;
+    font-family: monospace;
+    text-align: left;
+}
+
+#right {
+    text-align: right;
+}
+
+span {
+    border: #3b3a37 5px solid;
+    background: linear-gradient(90deg, #a56101, #364444);
+}
