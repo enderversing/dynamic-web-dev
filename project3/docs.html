@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css"
+        />
+    </head>
+    <body>
+        <h1 id="week-3-documentation">Week 3 Documentation</h1>
+        <p>
+            I
+            <a
+                href="https://enderversing.github.io/itp-blog/year/2025/fall/undnet/weeks/week10.html"
+                >made my own API for a previous class</a
+            >, so I&#39;m going to build on that work in this assignment.
+        </p>
+        <p>
+            My previous documentation contains this example, which I need to
+            convert to a JavaScript fetch request:
+        </p>
+        <pre><code class="lang-bash"><span class="hljs-comment"># Filter by minimum cash award (&gt; 200)</span>
+    curl <span class="hljs-_">-s</span> <span class="hljs-string">"https://starling.directory/api/filter?cashAward=200"</span>
+    </code></pre>
+        <p>Let me think. That would be, roughly:</p>
+        <pre><code class="lang-javascript">
+    <span class="hljs-keyword">let</span> userSupplied = document.getElementById(<span class="hljs-string">"amount"</span>).<span class="hljs-keyword">value</span>;
+
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">params</span> = <span class="hljs-keyword">new</span> URLSearchParams({
+      cashAward: userSupplied
+    });
+
+    <span class="hljs-keyword">let</span> url = <span class="hljs-string">"https://starling.directory/api/filter?"</span> + <span class="hljs-keyword">params</span>;
+
+    <span class="hljs-keyword">let</span> response = <span class="hljs-keyword">await</span> fetch(url); <span class="hljs-comment">// this must be inside an async function</span>
+
+    <span class="hljs-keyword">let</span> jsonData = <span class="hljs-keyword">await</span> response.json() <span class="hljs-comment">//Display this data!</span>
+    </code></pre>
+        <p>
+            That&#39;s the core logic, if you will. Everything else is just
+            styling to make the webpage look better.
+        </p>
+        <p>
+            My only other thought is that I need to make sure the
+            <code>userSupplied</code> variable is a number and
+            <a href="https://owasp.org/www-community/attacks/xss/"
+                >contains no code that could harm my server</a
+            >.
+        </p>
+        <p>In my HTML, I can say:</p>
+        <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"index.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"How much money do you need?"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"index.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    </code></pre>
+        <p>
+            I hope the browser&#39;s built-in user input validation is enough!
+        </p>
+        <p>
+            (I prefer adding JavaScript to the body tag, not the head tag. I
+            care a lot about
+            <a
+                href="https://dev.to/ender_minyard/the-ultimate-guide-to-web-performance-ci4"
+                >performance</a
+            >.)
+        </p>
+        <hr />
+        <p>
+            If this page ends up being displayed as HTML, it will be because I
+            used a
+            <a href="https://markdowntoword.net/markdown-to-html"
+                >Markdown to HTML converter</a
+            >.
+        </p>
+        <p>
+            (I am providing documentation about my
+            <a href="docs.md">documentation</a>.)
+        </p>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </body>
+</html>

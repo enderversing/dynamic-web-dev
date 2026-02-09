@@ -1,0 +1,12 @@
+.hidden {
+    display: none;
+}
+
+#first {
+    margin: 0 auto;
+}
+
+pretty-json {
+    text-align: left;
+    margin: 3rem;
+}
