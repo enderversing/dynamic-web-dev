@@ -1,3 +1,5 @@
+window.onload = () => {
+
 document.querySelector("button").addEventListener("click", async () => {
   let userSupplied = document.getElementById("amount").value;
 
@@ -28,3 +30,5 @@ document.querySelector("button").addEventListener("click", async () => {
     <pretty-json> ${JSON.stringify(jsonData)} </pretty-json></center> `;
   }
 });
+  
+}
