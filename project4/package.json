@@ -2,10 +2,7 @@
   "name": "project4",
   "version": "1.0.0",
   "description": "Project 4.",
-  "keywords": [
-    "opengraph",
-    "og"
-  ],
+  "keywords": [],
   "license": "MIT",
   "author": "enderverse",
   "type": "commonjs",
@@ -14,8 +11,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "playwright": "^1.58.2"
+    "express": "^5.2.1"
   }
 }
