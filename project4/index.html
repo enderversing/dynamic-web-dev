@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <body>
+        <img
+            id="add_here"
+            src="https://s.yimg.com/os/creatr-uploaded-images/2021-01/8ca1aa50-6246-11eb-afef-959314e514b9"
+        />
+        <script>
+            async function getData() {
+                const pageURL = "enderverse.org";
+                let encoded = encodeURI(pageURL);
+                try {
+                    const response = await fetch(
+                        `http://159.203.64.103/?=${encoded}`,
+                    );
+                    if (!response.ok) {
+                        throw new Error(`Response status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    document.querySelector("#add_here").src = result;
+
+                    console.log(result);
+                } catch (error) {
+                    console.error(error.message);
+                }
+            }
+        </script>
+    </body>
+</html>
