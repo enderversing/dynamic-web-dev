@@ -11,7 +11,7 @@
                 let encoded = encodeURI(pageURL);
                 try {
                     const response = await fetch(
-                        `http://159.203.64.103/?=${encoded}`,
+                        `http://159.203.64.103:2190/?=${encoded}`,
                     );
                     if (!response.ok) {
                         throw new Error(`Response status: ${response.status}`);
