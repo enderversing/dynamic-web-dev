@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const { chromium } = require("playwright");
-const url = require("url");
 let app = express();
 
 let corsOptions = {
@@ -25,36 +24,30 @@ let corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-app.use(cors(corsOptions));
-
-let browser;
-
-let launch = async () => {
-  browser = await chromium.launch({
-    headless: true,
-  });
-};
-
-launch();
+// app.use(cors(corsOptions));
 
 app.get("/", async (req, res) => {
-  let { pageUrl } = req.query;
+  let pageUrl = req.query.pageUrl;
+  console.log(pageUrl);
 
   if (!pageUrl) {
     return res.status(400).json({ error: "pageUrl required." });
   }
 
   try {
-    let page = await browser.newPage();
-
+    console.log("inside here!");
+    const browser = await chromium.launch();
+    console.log("we launched!");
+    const context = await browser.newContext();
+    const page = await context.newPage();
     await page.setViewportSize({ width: 1200, height: 630 });
     await page.goto(pageUrl);
 
+    console.log(page);
+
     let screenshot = await page.screenshot({ type: "png" });
 
-    res.setHeader("Content-Type", "image/png");
-    res.setHeader("Cache-Control", "public, max-age=60");
-    res.setHeader("Content-Length", screenshot.length);
+    console.log(screenshot);
 
     res.send(screenshot);
 
