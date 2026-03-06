@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <style>
+            body {
+                display: grid;
+                grid-template-rows: repeat(12, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            menu {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 1;
+                grid-row-end: 2;
+                background-color: lavender;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: right;
+                align-items: baseline;
+                gap: 1rem;
+                padding-top: 0.25rem;
+                padding-right: 0.25rem;
+            }
+
+            nav {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 2;
+                grid-row-end: 13;
+                background-color: LavenderBlush;
+                height: 100%;
+                width: 100%;
+            }
+
+            main {
+                grid-column-start: 2;
+                grid-column-end: 5;
+                grid-row-start: 2;
+                grid-row-end: 13;
+
+                background-color: lightsteelblue;
+                height: 100%;
+                width: 100%;
+            }
+
+            #index {
+                grid-column-start: 2;
+                grid-column-end: 5;
+                grid-row-start: 3;
+                grid-row-end: 12;
+                height: 100%;
+                border: 0.0725rem black dashed;
+                background-color: white;
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            ul {
+                list-style-type: "- ";
+            }
+
+            #menu_center {
+                text-align: center;
+            }
+
+            #menu_right {
+                text-align: right;
+            }
+
+            .dot {
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+            }
+
+            #remote {
+                background-color: yellow;
+            }
+            #local {
+                background-color: dimgrey;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <menu>
+            <span id="menu_center">project</span>
+            <aside>
+                <span class="dot" id="remote">R</span>
+                <span class="dot" id="local">L</span>
+            </aside>
+            <button id="menu_right">Share</button>
+        </menu>
+
+        <nav>
+            <details>
+                <ul>
+                    <li>code snippet</li>
+                    <li>debugger</li>
+                    <li>visualization</li>
+                </ul>
+                <summary>index</summary>
+            </details>
+        </nav>
+
+        <main></main>
+
+        <section id="index"><code>index.star</code></section>
+    </body>
+</html>

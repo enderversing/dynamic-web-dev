@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Week 6</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/addons/p5.sound.min.js"></script>-->
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div id="canvas"></div>
+        <div id="canvas2"></div>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="text" placeholder="name your file" name="filename" />
+            <input type="file" name="blob" />
+            <input type="hidden" name="hiddenValue" value="hihihi" />
+            <input type="submit" value="upload" />
+        </form>
+    </body>
+</html>

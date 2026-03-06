@@ -4,3 +4,7 @@ package-lock.json
 */node_modules/
 */.env
 */package-lock.json
+sessions.txt
+userdb.txt
+*/sessions.txt
+*/userdb.txt
