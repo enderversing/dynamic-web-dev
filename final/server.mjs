@@ -4,9 +4,6 @@ import expressSession from "express-session";
 import nedb from "@seald-io/nedb";
 import nedbSessionStore from "nedb-promises-session-store";
 import multer from "multer";
-import { createHelia } from "helia";
-import { json } from "@helia/json";
-import { CID } from "multiformats/cid";
 let app = express();
 
 const sessionStore = nedbSessionStore({
@@ -19,16 +16,14 @@ let genID = () => {
   return randomInt(10 ** 7 + 1, 10 ** 8).toString();
 };
 
-let expressSes = expressSession({
-  genid: genID,
-  store: sessionStore,
-  secret: "a-secret-for-you",
-  resave: false,
-  saveUninitialized: false,
-});
-
 app.use(
-  expressSes,
+  expressSession({
+    genid: genID,
+    store: sessionStore,
+    secret: "a-secret-for-you",
+    resave: true,
+    saveUninitialized: false,
+  }),
   express.static("public"),
   express.urlencoded({ extended: true }),
 );
@@ -36,22 +31,19 @@ app.use(
 const upload = multer({ storage: multer.memoryStorage() });
 
 app.post("/new-session", upload.array("snippets"), async (req, res) => {
-  const helia = await createHelia();
-  const j = json(helia);
-
   let session = req.session;
 
-  let ipfs_files = {};
+  let sentfiles = [];
 
   if (req.files && req.files.length) {
     for (const file of req.files) {
-      ipfs_files[file.originalname] = {
+      sentfiles.push({
+        name: file.originalname,
         data: file.buffer.toString("base64"),
-      };
+      });
     }
   }
-  const myImmutableAddress = await j.add(ipfs_files);
-  session.files = myImmutableAddress.toString();
+  session.files = sentfiles;
   res.redirect(`/app/index.html?pin=${session["id"]}`);
 });
 
@@ -68,18 +60,14 @@ app.post("/retrieve-session", async (req, res) => {
 });
 
 app.post("/get-canvas", async (req, res) => {
-  const helia = await createHelia();
-  const j = json(helia);
-
   sessionStore.get(req.query.pin, async (err, foundUser) => {
     if (foundUser) {
       let session = req.session;
       session._id = foundUser._id;
       session.files = foundUser.files;
-      let ipfs_cid = session.files;
-      res.send(ipfs_cid);
+      res.type("json").send(session.files);
     } else {
-      console.log("no CID retrieved");
+      console.log("no files retrieved");
     }
   });
 });
