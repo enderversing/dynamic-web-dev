@@ -2,30 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <style>
-            body {
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-template-rows: 100vh;
-                align-items: center;
-                justify-items: center;
-            }
-            main {
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                border: 0.0725rem black solid;
-                border-radius: 0.5rem;
-                padding: 1rem;
-            }
-
-            main > section {
-                text-align: center;
-                border: 0.0725rem black dashed;
-                border-radius: 0.5rem;
-                padding: 1rem;
-            }
-        </style>
+        <link href="index/index.css" rel="stylesheet" />
     </head>
     <body>
         <main>
@@ -35,15 +12,12 @@
                     action="/new-session"
                     enctype="multipart/form-data"
                 >
+                    <input type="file" name="snippets" multiple="multiple" />
                     <input type="submit" value="New Session" />
                 </form>
             </section>
             <section>
-                <form
-                    method="POST"
-                    action="/retrieve-session"
-                    enctype="multipart/form-data"
-                >
+                <form method="POST" action="/retrieve-session">
                     <p>Join a remote session</p>
                     <input
                         type="number"
@@ -55,5 +29,6 @@
                 </form>
             </section>
         </main>
+        <script src="index/index.js"></script>
     </body>
 </html>

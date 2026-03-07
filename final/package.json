@@ -12,11 +12,16 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@helia/json": "^5.0.7",
     "@seald-io/nedb": "^4.1.2",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
+    "helia": "^6.0.21",
+    "multer": "^2.1.1",
+    "multiformats": "^13.4.2",
+    "nedb-promises": "^6.2.3",
     "nedb-promises-session-store": "^1.0.4"
   }
 }

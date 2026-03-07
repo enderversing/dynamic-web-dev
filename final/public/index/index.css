@@ -1,0 +1,22 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh;
+    align-items: center;
+    justify-items: center;
+}
+main {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border: 0.0725rem black solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+main > section {
+    text-align: center;
+    border: 0.0725rem black dashed;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
